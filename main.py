@@ -43,10 +43,10 @@ def webhook():
             "source":
             "webhookdata"
         }
-        return 200
-    except:
-        print('error')
-        return 400
+        return "200"
+    except Exception as e:
+        print('error',e)
+        return "400 " + e
 
 
 if __name__ == '__main__':
