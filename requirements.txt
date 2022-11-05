@@ -5,4 +5,4 @@ itsdangerous
 Jinja2
 MarkupSafe
 Werkzeug
-openai
+openai==0.22.1
