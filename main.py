@@ -44,13 +44,13 @@ def webhook():
             "source":
             "webhookdata"
         }
-        return 200
+        return '200'
     except Exception as e:
         print('error',e)
         exc_type, exc_obj, exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         print('oops',exc_type, fname, exc_tb.tb_lineno)
-        return 400
+        return '400'
 
 
 if __name__ == '__main__':
