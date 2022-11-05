@@ -1,6 +1,7 @@
 from flask import Flask, request
 import os
 import openai
+import sys
 
 app = Flask(__name__)
 
@@ -23,6 +24,7 @@ def webhook():
         restart_sequence = "\nUser->"
 
         if query_result.get('action') == 'input.unknown':
+#             response = None
             
             response = openai.Completion.create(
                 model="davinci:ft-personal-2022-08-20-13-32-16",
@@ -46,6 +48,9 @@ def webhook():
         return "200"
     except Exception as e:
         print('error',e)
+        exc_type, exc_obj, exc_tb = sys.exc_info()
+        fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+        print('oops',exc_type, fname, exc_tb.tb_lineno)
         return "400 " + str(e)
 
 
