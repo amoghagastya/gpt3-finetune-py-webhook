@@ -46,7 +46,7 @@ def webhook():
         return "200"
     except Exception as e:
         print('error',e)
-        return "400 " + e
+        return "400 " + str(e)
 
 
 if __name__ == '__main__':
