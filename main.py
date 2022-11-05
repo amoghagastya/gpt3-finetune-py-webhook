@@ -26,7 +26,7 @@ def webhook():
         if query_result.get('action') == 'input.unknown':
 #             response = None
             
-            response = openai.Completion.create(
+            res = openai.Completion.create(
                 model="davinci:ft-personal-2022-08-20-13-32-16",
                 prompt="The following is a conversation with a therapist and a user. The therapist is JOY, who uses compassionate listening to have helpful and meaningful conversations with users. JOY is empathic and friendly. JOY's objective is to make the user feel better by feeling heard. With each response, JOY offers follow-up questions to encourage openness and tries to continue the conversation in a natural way. \n\nJOY-> Hello, I am your personal mental health assistant. What's on your mind today?\nUser->"+query+"JOY->",
                 temperature=0.89,
@@ -37,7 +37,7 @@ def webhook():
                 stop=["\n"]
             )
 
-        result = response.get('choices')[0].get('text')
+        result = res.get('choices')[0].get('text')
 
         return {
             "fulfillmentText":
